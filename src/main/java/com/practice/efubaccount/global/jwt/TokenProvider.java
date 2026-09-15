@@ -23,6 +23,8 @@ import java.util.Set;
 public class TokenProvider {
 
     // TODO 1.application.yml에 저장한 jwt값 가져오기
+    @Value("${jwt.secretKey}")
+    private String secretKey;
 
     // TODO 2.토큰 만료시간 설정
 
