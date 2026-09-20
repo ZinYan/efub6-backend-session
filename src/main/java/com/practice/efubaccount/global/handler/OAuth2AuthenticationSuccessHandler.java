@@ -28,7 +28,7 @@ public class OAuth2AuthenticationSuccessHandler implements AuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         // TODO 1.OAuth2 인증된 사용자 정보 가져오기
-        DefaultOAuth2User defaultOAuth2User = (DefaultOAuth2User) authentication.getPrincipal();
+        DefaultOAuth2User oAuth2User = (DefaultOAuth2User) authentication.getPrincipal();
 
         //TODO 2.사용자 속성에서 이메일 추출
         String email = (String) oAuth2User.getAttributes().get("email");

@@ -24,7 +24,7 @@ import java.util.Map;
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
     private final AccountRepository accountRepository;
-    private final OAuth2UserService oAuth2UserService;
+//    private final OAuth2UserService oAuth2UserService;
 
     //OAuth2UserRequest를 받아 사용자를 로드하는 메서드
     @Override
@@ -53,7 +53,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
     //사용자 생성 메서드 : OAuth2로그인은 비밀번호가 필요하지 않으므로 ""로 처리
     //TODO: 처음으로 로그인 시도하는 유저 정보를 받아 이메일, 비밀번호, 닉네임의 정보가 있는 사용자 생성
-    private Account createAccount() {
+    private Account createAccount(OAuth2UserInfo oAuth2UserInfo) {
         Account account = Account.builder()
                 .email(oAuth2UserInfo.getEmail())
                 .password("")
