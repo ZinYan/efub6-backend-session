@@ -135,6 +135,7 @@ jobs:
         run: ./gradlew test
         env:
           SPRING_PROFILES_ACTIVE: test
+          JWT_SECRETKEY: ${{ env.JWT_SECRET_KEY }}
           SPRING_DATASOURCE_URL: ${{ env.DB_URL }}
           SPRING_DATASOURCE_USERNAME: ${{ env.DB_USERNAME }}
           SPRING_DATASOURCE_PASSWORD: ${{ env.DB_PASSWORD }}
