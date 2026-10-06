@@ -99,6 +99,7 @@ jobs:
       DB_URL: jdbc:mysql://127.0.0.1:3306/efub?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       DB_USERNAME: root
       DB_PASSWORD: root
+      JWT_SECRET_KEY: dGVzdC1vbmx5LXNlY3JldC1rZXktZm9yLWp1bml0LXRlc3RpbmctZG8tbm90LXVzZS1pbi1wcm9k
       BASE_URL: http://127.0.0.1:8080
       TARGET_VUS: ${{ inputs.target_vus || '10' }}
       MAX_P95_MS: ${{ inputs.max_p95_ms || '500' }}
@@ -134,6 +135,11 @@ jobs:
         run: ./gradlew test
         env:
           SPRING_PROFILES_ACTIVE: test
+          SPRING_DATASOURCE_URL: ${{ env.DB_URL }}
+          SPRING_DATASOURCE_USERNAME: ${{ env.DB_USERNAME }}
+          SPRING_DATASOURCE_PASSWORD: ${{ env.DB_PASSWORD }}
+          SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+          SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
 
       - name: Build application
         run: ./gradlew bootJar
