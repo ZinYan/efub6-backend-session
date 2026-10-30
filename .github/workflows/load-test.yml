@@ -133,7 +133,7 @@ jobs:
       - name: Test application
         run: ./gradlew test
         env:
-          SPRING_PROFILES_ACTIVE: test
+          SPRING_PROFILES_ACTIVE: ci
 
       - name: Build application
         run: ./gradlew bootJar
